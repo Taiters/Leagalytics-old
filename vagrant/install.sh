@@ -1,0 +1,1 @@
+sudo mv /vagrant/vagrant/nginx-host /etc/nginx/sites-available/vagrant
