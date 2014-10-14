@@ -1,25 +1,39 @@
-## Laravel PHP Framework
+# Leagalytics
+Analytics for League of Legends to make players play good
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Setup
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+run `vagrant up`
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+### MongoDB
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+MongoDB is running as a service called mongod, so to start and stop run
 
-## Official Documentation
+    sudo service mongod start/stop
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+The MongoDB cli client is run with `mongo`
 
-### Contributing To Laravel
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+### Redis
 
-### License
+Redis runs as a service called redis-server, so to start and stop run
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+    sudo service redis-server start/stop
+
+The Redis cli client is run with `redis-client`
+
+### Bower
+
+JS dependencies are managed with bower. They are currently installed straight into the `public/js/lib` directory, though I'm not sure sticking with this is good due to all the bloat the comes with some libs and their separate directory structures but it will do for now...
+
+But yeah, run `bower install`
+
+### NPM
+
+NPM as usual for gulp pipeline stuff, so run `npm install`
+
+## Gulp Commands
+
+### make-coffee
+
+Run this to compile coffeescript files found under the `public/js/src` directory, and place them in `public/js/dist`
