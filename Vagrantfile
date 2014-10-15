@@ -97,7 +97,7 @@ Vagrant.configure("2") do |config|
   # If using VirtualBox
   config.vm.provider :virtualbox do |vb|
 
-    vb.name = "Vaprobash"
+    vb.name = "Vaprobash Leagalytics"
 
     # Set server memory
     vb.customize ["modifyvm", :id, "--memory", server_memory]

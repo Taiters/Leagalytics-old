@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+
+<project name="Leagalytics" default="build" basedir=".">
+	<property file="build.properties" />
+
+	<!-- <target name="build" depends="cleardown, clonecode, prepareRelease, deploy"> -->
+	<target name="build" depends="selectEnvironment, prepareBuildDirectory, fetchCode, cleanBuildFolder, archiveBuildFolder, deploy">
+		<echo msg="Starting deployment.. "/>
+	</target>
+
+	<!-- Prompt the User to select either a staging or live deployment -->
+	<target name="selectEnvironment">
+		<input message="What environment are you deploying to?" propertyName="targetEnvironment" validArgs="staging,production" defaultValue="staging"/>
+	</target>
+
+	<!-- Remove any old build directories, create fresh one -->
+	<target name="prepareBuildDirectory">
+		<echo msg="Clearing any old release/deployment files" />
+		<delete dir="${local.build.dir}" quiet='true' />
+		<echo msg="Creating new build dir" />
+		<mkdir dir="${local.build.dir}" />
+	</target>
+
+	<!-- Prompt for branch to deploy and fetch code -->
+	<target name="fetchCode">
+		<input message="Which branch are you deploying?" propertyName="branch" defaultValue="develop"/>
+
+		<exec command="git archive ${branch} | bzip2 > ${local.build.dir}/build.tar.bz2"></exec>
+		<if>
+		    <available file="./${local.build.dir}/build.tar.bz2" property="buildArchiveExists"/>
+		    <then>
+		        <exec command="tar jxf ${local.build.dir}/build.tar.bz2 -C ${local.build.dir}"></exec>
+		        <delete file="./${local.build.dir}/build.tar.bz2" />
+		    </then>
+		    <else>
+		    	<fail message="Couldn't find build archive - Invalid branch specified perhaps?" />
+		    </else>
+		</if>
+	</target>
+
+	<!-- Remove any unwanted files from the build bir -->
+	<target name="cleanBuildFolder">
+		<delete dir="${local.build.dir}/app/config/local" quiet='true'/>
+		<delete dir="${local.build.dir}/app/config/testing" quiet='true'/>
+		<delete dir="${local.build.dir}/vagrant" quiet='true'/>
+		<delete file="${local.build.dir}/server.php" quiet='true'/>
+		<delete file="${local.build.dir}/readme.md" quiet='true'/>
+		<delete file="${local.build.dir}/phpunit.xml" quiet='true'/>
+		<delete file="${local.build.dir}/build.xml" quiet='true'/>
+		<delete file="${local.build.dir}/build.properties" quiet='true'/>
+		<delete file="${local.build.dir}/Vagrantfile" quiet='true'/>
+		<delete file="${local.build.dir}/CONTRIBUTING.MD" quiet='true'/>
+
+		<phingcall target="${targetEnvironment}.cleanBuildFolder"></phingcall>
+	</target>
+
+	<target name="staging.cleanBuildFolder">
+		<delete dir="${local.build.dir}/app/config/production" quiet='true'/>
+	</target>
+
+	<target name="production.cleanBuildFolder">
+		<delete dir="${local.build.dir}/app/config/staging" quiet='true'/>
+	</target>
+
+	<target name="archiveBuildFolder">
+		<tar destfile = "./${local.build.dir}/build.tar.gz" compression = "gzip">
+			<fileset dir = "./build">
+				<include name = "*" />
+			</fileset>
+		</tar>
+	</target>
+
+	<target name="deploy">
+		<phingcall target="${targetEnvironment}.deploy"></phingcall>
+	</target>
+
+	<target name="staging.deploy">
+		<echo msg="-- DEPLOYING TO STAGE --" />
+		<echo msg="Copying build archive to remote server" />
+		<exec command="scp ${local.build.dir}/build.tar.gz ${stage.user}@${stage.server}:${stage.dir}"></exec>
+
+		<echo msg="Extracting archive" />
+		<exec command="ssh ${stage.user}@${stage.server} 'tar xvf ${stage.dir}/build.tar.gz -C ${stage.dir} &amp;&amp; exit'"/>
+
+		<echo msg="Deleting build zip" />
+		<exec command="ssh ${stage.user}@${stage.server} 'rm -rf ${stage.dir}/build.tar.gz'"></exec>
+
+		<echo msg="Running migrations - php ${stage.dir}/artisan migrate --env=${targetEnvironment}" />
+		<exec command="ssh ${stage.user}@${stage.server} 'php ${stage.dir}/artisan migrate --env=${targetEnvironment} --seed'"></exec>
+
+		<echo msg="Running composer install" />
+		<exec command="ssh ${stage.user}@${stage.server} 'cd ${stage.dir}; composer install'"></exec>
+
+		<echo msg="Making storage directory writable" />
+		<exec command="ssh ${stage.user}@${stage.server} 'chmod -R 777 ${stage.dir}/app/storage'"></exec>
+
+        <echo msg="Deleting local build folder" />
+        <delete dir="${local.build.dir}" quiet='true' />
+
+        <!-- Add asset cache cleanup -->
+	</target>
+
+	<target name="production.deploy">
+        <echo msg="-- DEPLOYING TO LIVE --" />
+
+        <!-- Add asset cache cleanup -->
+        <!-- Remove robots.txt -->
+	</target>
+</project>
