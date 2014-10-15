@@ -94,6 +94,8 @@ Vagrant.configure("2") do |config|
             :nfs => true,
             :mount_options => ['nolock,vers=3,udp,noatime']
 
+  config.ssh.forward_agent = true
+
   # If using VirtualBox
   config.vm.provider :virtualbox do |vb|
 
