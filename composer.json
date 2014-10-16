@@ -8,7 +8,7 @@
 		"laravel/framework": "4.2.*"
 	},
 	"require-dev": {
-        "phing/phing": "dev-master",
+		"phing/phing": "dev-master",
 		"phpspec/phpspec": "~2.0"
 	},
 	"autoload": {
