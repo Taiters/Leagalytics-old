@@ -1,8 +1,10 @@
 /bootstrap/compiled.php
 /vendor
 bower_components
-/public/js/lib
-/public/css/lib
+bower_libs
+/public/lib
+/public/js
+/public/css
 /node_modules
 /.vagrant
 composer.phar

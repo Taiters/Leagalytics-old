@@ -14,6 +14,29 @@
   "dependencies": {
     "marionette": "~2.2.1",
     "backbone.radio": "~0.7.0",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "font-awesome": "~4.2.0"
+  },
+  "install": {
+    "base": "client/bower_libs",
+    "path" : {
+      "js": "%(key)s/js",
+      "css": "%(key)s/css",
+      "eot": "%(key)s/fonts",
+      "svg": "%(key)s/fonts",
+      "ttf": "%(key)s/fonts",
+      "woff": "%(key)s/fonts",
+      "otf": "%(key)s/fonts"
+    },
+    "sources": {
+      "bootstrap": [
+        "client/bower_components/bootstrap/dist/css/bootstrap.css",
+        "client/bower_components/bootstrap/dist/js/bootstrap.js",
+        "client/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+        "client/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
+        "client/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+        "client/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff"
+      ]
+    }
   }
 }

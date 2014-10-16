@@ -4,6 +4,8 @@ cd /vagrant
 
 composer install
 npm install
+npm install -g kimus/bower-installer
+npm install -g gulp
 bower install
 
 sudo service nginx reload
