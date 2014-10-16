@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "marionette": "~2.2.1",
-    "backbone.radio": "~0.7.0"
+    "backbone.radio": "~0.7.0",
+    "bootstrap": "~3.2.0"
   }
 }
