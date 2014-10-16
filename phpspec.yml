@@ -1,0 +1,6 @@
+suites:
+  leagalytics_suite:
+    namespace: Leagalytics
+    src_path: app
+    spec_path: app
+    spec_prefix: spec
