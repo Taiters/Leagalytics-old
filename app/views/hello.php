@@ -68,6 +68,27 @@
 </div>
 <script type='text/javascript' src='/js/lib/jquery/dist/jquery.min.js'></script>
 <script type='text/javascript' src='/js/lib/bootstrap/dist/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/jquery.backstretch.min.js'></script>
+<script>
+	var Lock = function () {
+	    return {
+	        //main function to initiate the module
+	        init: function () {
+
+	             $.backstretch([
+			        "/img/1.jpg"
+			        ], {
+			          fade: 1000,
+			          duration: 8000
+			      });
+	        }
+
+	    };
+
+	}();
+
+	Lock.init();
+</script>
 </body>
 <!-- END BODY -->
 </html>
