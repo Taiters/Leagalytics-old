@@ -19,14 +19,14 @@
 <link href="/lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link href="/css/theme/pages/lock.css" rel="stylesheet" type="text/css"/>
+<link href="/app/css/theme/pages/lock.css" rel="stylesheet" type="text/css"/>
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
-<link href="/css/theme/components.css" rel="stylesheet" type="text/css">
-<link href="/css/theme/plugins.css" rel="stylesheet" type="text/css">
-<link href="/css/theme/layout.css" rel="stylesheet" type="text/css">
-<link href="/css/theme/default.css" rel="stylesheet" type="text/css" id="style_color">
-<link href="/css/theme/custom.css" rel="stylesheet" type="text/css">
+<link href="/app/css/theme/components.css" rel="stylesheet" type="text/css">
+<link href="/app/css/theme/plugins.css" rel="stylesheet" type="text/css">
+<link href="/app/css/theme/layout.css" rel="stylesheet" type="text/css">
+<link href="/app/css/theme/default.css" rel="stylesheet" type="text/css" id="style_color">
+<link href="/app/css/theme/custom.css" rel="stylesheet" type="text/css">
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>

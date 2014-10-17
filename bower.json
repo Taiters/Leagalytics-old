@@ -15,11 +15,13 @@
     "marionette": "~2.2.1",
     "backbone.radio": "~0.7.0",
     "bootstrap": "~3.2.0",
-    "font-awesome": "~4.2.0"
+    "font-awesome": "~4.2.0",
+    "handlebars": "~2.0.0",
+    "require": "*"
   },
   "install": {
     "base": "client/bower_libs",
-    "path" : {
+    "path": {
       "js": "%(key)s/js",
       "css": "%(key)s/css",
       "eot": "%(key)s/fonts",

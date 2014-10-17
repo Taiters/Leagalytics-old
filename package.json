@@ -7,6 +7,8 @@
     "bower-installer": "git://github.com/kimus/bower-installer",
     "gulp": "^3.8.8",
     "gulp-coffee": "^2.2.0",
+    "gulp-define-module": "^0.1.1",
+    "gulp-handlebars": "^3.0.1",
     "gulp-if": "^1.2.5",
     "gulp-minify-css": "^0.3.11",
     "gulp-sass": "^1.1.0",

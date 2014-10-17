@@ -1,17 +1,20 @@
 var gulp = require('gulp'),
-	coffee = require('gulp-coffee'),
-	uglify = require('gulp-uglify'),
-	minify = require('gulp-minify-css'),
-	sass   = require('gulp-sass'),
-	gulpif = require('gulp-if'),
-	_      = require('underscore');
+	coffee       = require('gulp-coffee'),
+	uglify       = require('gulp-uglify'),
+	minify       = require('gulp-minify-css'),
+	sass         = require('gulp-sass'),
+	gulpif       = require('gulp-if'),
+	handlebars   = require('gulp-handlebars'),
+	defineModule = require('gulp-define-module'),
+	_            = require('underscore');
 
 
 var paths = {
 
 	app: {
 		js: 'client/src/js/**/*',
-		css: 'client/src/css/**/*'
+		css: 'client/src/css/**/*',
+		templates: 'client/src/templates/**/*.hbs'
 	},
 	lib: {
 		js: [
@@ -28,9 +31,10 @@ var paths = {
 		]
 	},
 	dist: {
-		js: 'public/js',
-		css: 'public/css',
-		lib: 'public/lib'
+		js: 'public/app/js',
+		css: 'public/app/css',
+		lib: 'public/lib',
+		templates: 'public/app/templates'
 	}
 };
 
@@ -49,6 +53,15 @@ function processJS( src, dest ) {
 		.pipe( uglify() )
 		.pipe( gulp.dest( dest ) );
 }
+
+gulp.task('build-templates', function() {
+
+	gulp.src( paths.app.templates )
+		.pipe( handlebars() )
+		.pipe( defineModule('amd') )
+		.pipe( gulp.dest( paths.dist.templates ) );
+
+});
 
 gulp.task('build-js', function() {
 
