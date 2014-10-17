@@ -15,18 +15,18 @@
 <meta content="" name="author"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
-<link href="/css/lib/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link href="/css/pages/lock.css" rel="stylesheet" type="text/css"/>
+<link href="/css/theme/pages/lock.css" rel="stylesheet" type="text/css"/>
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
-<link href="/css/lib/theme/components.css" rel="stylesheet" type="text/css">
-<link href="/css/lib/theme/plugins.css" rel="stylesheet" type="text/css">
-<link href="/css/lib/theme/layout.css" rel="stylesheet" type="text/css">
-<link href="/css/lib/theme/default.css" rel="stylesheet" type="text/css" id="style_color">
-<link href="/css/lib/theme/custom.css" rel="stylesheet" type="text/css">
+<link href="/css/theme/components.css" rel="stylesheet" type="text/css">
+<link href="/css/theme/plugins.css" rel="stylesheet" type="text/css">
+<link href="/css/theme/layout.css" rel="stylesheet" type="text/css">
+<link href="/css/theme/default.css" rel="stylesheet" type="text/css" id="style_color">
+<link href="/css/theme/custom.css" rel="stylesheet" type="text/css">
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -66,9 +66,9 @@
 		 2014 &copy; Metronic. Admin Dashboard Template.
 	</div>
 </div>
-<script type='text/javascript' src='/js/lib/jquery/dist/jquery.min.js'></script>
-<script type='text/javascript' src='/js/lib/bootstrap/dist/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/jquery.backstretch.min.js'></script>
+<script type='text/javascript' src='/lib/jquery/js/jquery.js'></script>
+<script type='text/javascript' src='/lib/bootstrap/js/bootstrap.js'></script>
+<script type='text/javascript' src='/lib/jquery.backstretch/js/jquery.backstretch.min.js'></script>
 <script>
 	var Lock = function () {
 	    return {

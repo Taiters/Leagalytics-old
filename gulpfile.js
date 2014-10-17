@@ -16,15 +16,15 @@ var paths = {
 	lib: {
 		js: [
 			'client/bower_libs/**/*.js',
-			'client/libs/**/*.js'
+			'client/lib/**/*.js'
 		],
 		css: [
 			'client/bower_libs/**/*.css',
-			'client/libs/**/*.css',
+			'client/lib/**/*.css',
 		],
 		assets: [
 			'client/bower_libs/**/!(*.js|*.css)',
-			'client/libs/**/!(*.js|*.css)'
+			'client/lib/**/!(*.js|*.css)'
 		]
 	},
 	dist: {
