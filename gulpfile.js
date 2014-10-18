@@ -94,5 +94,5 @@ gulp.task('build-lib-assets', function() {
 })
 
 gulp.task('build-libs', ['build-lib-css', 'build-lib-js', 'build-lib-assets']);
-gulp.task('build-app', ['build-js', 'build-css']);
+gulp.task('build-app', ['build-js', 'build-css', 'build-templates']);
 gulp.task('default', ['build-app', 'build-libs']);
