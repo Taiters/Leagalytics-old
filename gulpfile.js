@@ -50,7 +50,7 @@ function processJS( src, dest ) {
 
 	return gulp.src( src )
 		.pipe( gulpif( /\.coffee$/, coffee() ) )
-		.pipe( uglify() )
+		//.pipe( uglify() )
 		.pipe( gulp.dest( dest ) );
 }
 

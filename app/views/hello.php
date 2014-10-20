@@ -36,61 +36,26 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body>
-<div class="page-lock">
-<!-- 	<div class="page-logo">
-		<a class="brand" href="index.html">
-		<img src="../../assets/admin/layout3/img/logo-big.png" alt="logo"/>
-		</a>
-	</div> -->
-	<div class="page-body">
-		<img class="page-lock-img" src="http://placehold.it/200x200" alt="">
-		<div class="page-lock-info">
-			<h3>Bob Nilson</h3>
-			<span class="email">
-			bob@keenthemes.com </span>
-			<span class="locked">
-			Locked </span>
-			<form class="form-inline" action="index.html">
-				<div class="input-group input-medium">
-					<input type="text" class="form-control" placeholder="Password">
-					<span class="input-group-btn">
-					<button type="submit" class="btn blue icn-only"><i class="m-icon-swapright m-icon-white"></i></button>
-					</span>
-				</div>
-				<!-- /input-group -->
-				<div class="relogin">
-					<a href="login.html">
-					Not Bob Nilson ? </a>
-				</div>
-			</form>
-		</div>
-	</div>
-	<div class="page-footer-custom">
-		 2014 &copy; Metronic. Admin Dashboard Template.
-	</div>
-</div>
-<script type='text/javascript' src='/lib/jquery/js/jquery.js'></script>
-<script type='text/javascript' src='/lib/bootstrap/js/bootstrap.js'></script>
-<script type='text/javascript' src='/lib/jquery.backstretch/js/jquery.backstretch.min.js'></script>
+
 <script>
-	var Lock = function () {
-	    return {
-	        //main function to initiate the module
-	        init: function () {
+	// var Lock = function () {
+	//     return {
+	//         //main function to initiate the module
+	//         init: function () {
 
-	             $.backstretch([
-			        "/img/1.jpg"
-			        ], {
-			          fade: 1000,
-			          duration: 8000
-			      });
-	        }
+	//              $.backstretch([
+	// 		        "/img/1.jpg"
+	// 		        ], {
+	// 		          fade: 1000,
+	// 		          duration: 8000
+	// 		      });
+	//         }
 
-	    };
+	//     };
 
-	}();
+	// }();
 
-	Lock.init();
+	// Lock.init();
 </script>
 </body>
 <!-- END BODY -->

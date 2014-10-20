@@ -9,8 +9,10 @@ require.config
 		templates:  '../app/templates'
 
 		# General Libs
-		handlebars: 'handlebars/js/handlebars'
-		jquery:     'jquery/js/jquery'
+		bootstrap:            'bootstrap/js/bootstrap'
+		handlebars:           'handlebars/js/handlebars'
+		jquery:               'jquery/js/jquery'
+		'jquery.backstretch': 'jquery.backstretch/js/jquery.backstretch.min'
 
 		# Libs required by Marionette
 		backbone:              'backbone/js/backbone'
@@ -32,7 +34,13 @@ require.config
 			deps:    ["backbone"]
 			exports: "Marionette"
 
+		'jquery.backstretch':
+			deps: ['jquery']
 
-require ['app/app'], ( LeagalyticsApp ) ->
+		bootstrap:
+			deps: ['jquery']
 
-	LeagalyticsApp.start()
+
+require ['app/app', 'bootstrap'], ( Leagalytics ) ->
+
+	Leagalytics.start()
