@@ -3,7 +3,9 @@
 bower_components
 bower_libs
 /public/lib
-/public/app
+/public/app/js
+/public/app/css
+/public/app/templates
 /node_modules
 /.vagrant
 composer.phar

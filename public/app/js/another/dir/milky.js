@@ -1,1 +1,0 @@
-(function(){!function(){return alert("IM A MILKY COFFEE")}()}).call(this);
