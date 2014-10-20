@@ -93,6 +93,19 @@ gulp.task('build-lib-assets', function() {
 		.pipe( gulp.dest( paths.dist.lib ) );
 })
 
+gulp.task('watch', function() {
+
+	gulp.watch( paths.app.templates, ['build-templates'] );
+	gulp.watch( paths.app.js, ['build-js'] );
+	gulp.watch( paths.app.css, ['build-css'] );
+	gulp.watch( paths.lib.js, ['build-lib-js'] );
+	gulp.watch( paths.lib.css, ['build-lib-css'] );
+	gulp.watch( paths.lib.assets, ['build-lib-assets'] );
+
+});
+
 gulp.task('build-libs', ['build-lib-css', 'build-lib-js', 'build-lib-assets']);
 gulp.task('build-app', ['build-js', 'build-css', 'build-templates']);
 gulp.task('default', ['build-app', 'build-libs']);
+
+

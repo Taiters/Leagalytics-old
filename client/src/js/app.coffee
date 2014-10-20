@@ -1,4 +1,5 @@
-require [ 'templates/a/test/file'], ( test ) ->
+define ['marionette'], ( Marionette ) ->
 
-	console.log test
-		name: 'Dan'
+	LeagalyticsApp = new Backbone.Marionette.Application();
+
+	return LeagalyticsApp;
