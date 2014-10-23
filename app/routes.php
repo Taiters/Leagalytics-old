@@ -15,3 +15,9 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+Route::group(['namespace' => 'Api', 'prefix' => 'api'], function()
+{
+    Route::resource('summoners.statistics', 'SummonerStatisticController',['only' => ['show']]);
+});
