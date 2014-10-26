@@ -1,4 +1,4 @@
-define ['app/app', 'templates/login/layout', 'jquery.backstretch'], ( Leagalytics, layout ) ->
+define ['app/app', 'templates/session/layout', 'jquery.backstretch'], ( Leagalytics, layout ) ->
 
 	Marionette.LayoutView.extend
 

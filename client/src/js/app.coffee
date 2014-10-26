@@ -42,9 +42,21 @@ define ['marionette'], ( Marionette ) ->
 
 		if Backbone.history
 
-			require ['app/login/app', 'app/summoner/app'], () ->
+			require ['app/session/app', 'app/summoner/app'], () ->
 
 				Backbone.history.start()
+
+				summoner = Leagalytics.request 'summoner:current'
+				
+				unless summoner
+
+					Leagalytics.trigger 'login:login'
+
+				else
+
+					Leagalytics.trigger 'login:hello'
+				
+
 
 	window.Leagalytics = Leagalytics
 

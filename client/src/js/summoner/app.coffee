@@ -10,19 +10,36 @@ define ['app/app', 'app/summoner/entities'], ( Leagalytics, Entities ) ->
 
 				return @summoner
 
+			Leagalytics.commands.setHandler 'summoner:setCurrent', ( summoner ) =>
+
+				if summoner.name && summoner.region
+
+					SummonerApp.setSummoner summoner.name, summoner.region
+
 
 		SummonerApp.loadSummoner = () ->
 
-			summoners = new Entities.SummonerCollection();
+			@summoners = new Entities.SummonerCollection()
+			@summoners.fetch()
 
-			summoners.fetch()
+			if !@summoners.isEmpty()
 
-			if !summoners.isEmpty()
-
-				@summoner = summoners.first()
+				@summoner = @summoners.first()
 
 			else
 
 				@summoner = null
+
+		SummonerApp.setSummoner = ( name, region ) ->
+
+			@summoner = @summoners.create
+				name: name
+				region: region
+
+			debugger
+
+
+
+
 
 
