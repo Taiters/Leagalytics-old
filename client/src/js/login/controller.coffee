@@ -6,7 +6,7 @@ define ['app/app', 'app/login/view', 'app/login/hello'], ( Leagalytics, LoginVie
 
 			loginView = new LoginView()
 
-			Leagalytics.LoginApp.layout.panel.show loginView
+			Leagalytics.getLayout().panel.show loginView
 
 			loginView.on 'login:hello', ( name ) ->
 
@@ -18,7 +18,7 @@ define ['app/app', 'app/login/view', 'app/login/hello'], ( Leagalytics, LoginVie
 				model: new Backbone.Model
 					name: name
 
-			Leagalytics.LoginApp.layout.panel.show helloView
+			Leagalytics.getLayout().panel.show helloView
 
 
 	return Leagalytics.LoginApp.Controller

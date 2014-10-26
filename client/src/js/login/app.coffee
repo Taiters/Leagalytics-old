@@ -6,9 +6,8 @@ define ['app/app', 'app/login/layout'], ( Leagalytics, Layout ) ->
 
 		LoginApp.onStart = () ->
 
-				LoginApp.layout = new Layout();
-
-				Leagalytics.rootRegion.show LoginApp.layout
+			layout = new Layout();
+			Leagalytics.setLayout layout
 
 
 	Leagalytics.module 'Routers.LoginApp', ( LoginAppRouter, Leagalytics, Backbone, Marionette, $, _ ) ->

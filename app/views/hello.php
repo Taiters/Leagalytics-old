@@ -27,6 +27,7 @@
 <link href="/app/css/theme/layout.css" rel="stylesheet" type="text/css">
 <link href="/app/css/theme/default.css" rel="stylesheet" type="text/css" id="style_color">
 <link href="/app/css/theme/custom.css" rel="stylesheet" type="text/css">
+<link href="/app/css/app.css" rel="stylesheet" type="text/css">
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 

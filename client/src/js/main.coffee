@@ -20,6 +20,7 @@ require.config
 		underscore:            'underscore/js/underscore'
 		'backbone.babysitter': 'backbone.babysitter/js/backbone.babysitter'
 		'backbone.wreqr':      'backbone.wreqr/js/backbone.wreqr'
+		'backbone.localStorage': 'backbone.localStorage/js/backbone.localStorage'
 
 	shim:
 
@@ -39,6 +40,9 @@ require.config
 
 		bootstrap:
 			deps: ['jquery']
+
+		'backbone.localStorage':
+			deps: ['backbone']
 
 
 require ['app/app', 'bootstrap'], ( Leagalytics ) ->

@@ -9,7 +9,20 @@ define ['marionette'], ( Marionette ) ->
 
 		Backbone.history.navigate route, options
 
-	Leagalytics.getCurrentRoute = () -> Backbone.history.fragment
+
+	Leagalytics.setLayout = ( layout ) -> 
+
+		Leagalytics.rootRegion.show layout
+
+
+	Leagalytics.getLayout = () -> 
+
+		Leagalytics.rootRegion.currentView
+
+
+	Leagalytics.getCurrentRoute = () -> 
+
+		Backbone.history.fragment
 
 
 	Leagalytics.startSubApp = ( appName, args ) ->
@@ -29,7 +42,7 @@ define ['marionette'], ( Marionette ) ->
 
 		if Backbone.history
 
-			require ['app/login/app'], () ->
+			require ['app/login/app', 'app/summoner/app'], () ->
 
 				Backbone.history.start()
 

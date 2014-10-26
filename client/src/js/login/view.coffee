@@ -1,8 +1,8 @@
-define ['app/app', 'templates/login/summoner'], ( Leagalytics, summoner ) ->
+define ['app/app', 'templates/login/form'], ( Leagalytics, form ) ->
 
 	Marionette.ItemView.extend
 
-		template: summoner
+		template: form
 
 		events:
 			'submit #summoner-name-form': 'sayHello'

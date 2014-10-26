@@ -1,0 +1,16 @@
+// app.scss is responsible for importing all other scss files.
+// Ideally, it should not contain any styles of it's own.
+// For folder which contain a lot of files, use sub app file
+// to import each separate file, to save this file from getting bloated.
+// For example:
+
+//     app.scss (imports "login/_form.scss" and "dashboard/_app.scss")
+//         login/
+//             _form.scss
+//         dashboard/
+//             _app.scss (imports other files in folder)
+//             _buttons.scss 
+//             _summoners.scss
+//             _matches.scss
+
+@import 'login/form';
