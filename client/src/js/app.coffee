@@ -1,4 +1,4 @@
-define ['marionette'], ( Marionette ) ->
+define ['marionette', 'app/layout'], ( Marionette, Layout ) ->
 
 	Leagalytics = new Backbone.Marionette.Application();
 
@@ -14,6 +14,8 @@ define ['marionette'], ( Marionette ) ->
 
 		Leagalytics.rootRegion.show layout
 
+	Leagalytics.getDefaultLayout = () -> new Layout()
+
 
 	Leagalytics.getLayout = () -> 
 
@@ -24,6 +26,25 @@ define ['marionette'], ( Marionette ) ->
 
 		Backbone.history.fragment
 
+	Leagalytics.login = ( input ) ->
+
+		Leagalytics.commands.execute 'summoner:setCurrent', input
+		Leagalytics.trigger 'dashboard:home'
+
+	Leagalytics.logout = () ->
+
+		Leagalytics.commands.execute 'summoner.clearCurrent'
+		Leagalytics.trigger 'session:create'
+
+	Leagalytics.getAppLayout = ( appName ) ->
+
+		if Leagalytics.currentApp && typeof(Leagalytics.currentApp.getLayout) == 'function'
+
+			Leagalytics.currentApp.getLayout()
+
+		else
+
+			Leagalytics.getDefaultLayout()
 
 	Leagalytics.startSubApp = ( appName, args ) ->
 
@@ -37,27 +58,32 @@ define ['marionette'], ( Marionette ) ->
 
 		currentApp.start args if currentApp
 
+		Leagalytics.setLayout Leagalytics.getAppLayout()
+
 
 	Leagalytics.on 'start', () ->
 
 		if Backbone.history
 
-			require ['app/session/app', 'app/summoner/app'], () ->
+			require [
+				'app/session/app', 
+				'app/dashboard/app',
+				'app/summoner/app'
+			], () ->
 
 				Backbone.history.start()
 
 				summoner = Leagalytics.request 'summoner:current'
-				
+
 				unless summoner
 
 					Leagalytics.trigger 'login:login'
 
 				else
 
-					Leagalytics.trigger 'login:hello'
+					Leagalytics.trigger 'dashboard:home'
 				
 
-
-	window.Leagalytics = Leagalytics
+	Leagalytics.commands.setHandler 'navigation:invalid', () -> Leagalytics.trigger 'dashboard:home'
 
 	return Leagalytics;

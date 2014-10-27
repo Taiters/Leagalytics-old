@@ -14,7 +14,12 @@ define ['app/app', 'app/summoner/entities'], ( Leagalytics, Entities ) ->
 
 				if summoner.name && summoner.region
 
-					SummonerApp.setSummoner summoner.name, summoner.region
+					@setSummoner summoner.name, summoner.region
+
+			Leagalytics.commands.setHandler 'summoner.clearCurrent', () =>
+
+				@clearSummoner()
+
 
 
 		SummonerApp.loadSummoner = () ->
@@ -36,7 +41,9 @@ define ['app/app', 'app/summoner/entities'], ( Leagalytics, Entities ) ->
 				name: name
 				region: region
 
-			debugger
+		SummonerApp.clearSummoner = () ->
+
+			@summoners.each (summoner) -> summoner.destroy()
 
 
 

@@ -4,11 +4,21 @@ define ['app/app', 'app/session/layout'], ( Leagalytics, Layout ) ->
 
 		SessionApp.startWithParent = false
 
-		SessionApp.onStart = () ->
+		SessionApp.getLayout = () -> new Layout();
 
-			layout = new Layout();
-			Leagalytics.setLayout layout
+		SessionApp.check = () ->
 
+			summoner = Leagalytics.request 'summoner:current'
+
+			if summoner
+
+				Leagalytics.commands.execute 'navigation:invalid' 
+
+				false
+
+			else
+
+				true
 
 	Leagalytics.module 'Routers.SessionApp', ( SessionAppRouter, Leagalytics, Backbone, Marionette, $, _ ) ->
 
@@ -17,6 +27,7 @@ define ['app/app', 'app/session/layout'], ( Leagalytics, Layout ) ->
 			appRoutes:
 
 				"login": "create"
+				"logout": "destroy"
 
 		executeAction = ( action, args ) ->
 
@@ -28,18 +39,28 @@ define ['app/app', 'app/session/layout'], ( Leagalytics, Layout ) ->
 
 			create: () ->
 
-				require ['app/session/controller'], ( Controller ) ->
+				if Leagalytics.SessionApp.check()
 
-					executeAction Controller.create
+					require ['app/session/controller'], ( Controller ) ->
+
+						executeAction Controller.create
+
+			destroy: () ->
+
+				Leagalytics.logout()
 
 		@listenTo Leagalytics, 'session:create', () ->
 
 			Leagalytics.navigate 'login'
-			controller.session()
+			controller.create()
 
-		@listenTo Leagalytics, 'session:store', ( input ) =>
+		@listenTo Leagalytics, 'session:store', ( input ) ->
 
-			Leagalytics.commands.execute 'summoner:setCurrent', input
+			Leagalytics.login input
+
+		@listenTo Leagalytics, 'session:destroy', () ->
+
+			controller.destroy()
 
 
 		Leagalytics.addInitializer () ->
